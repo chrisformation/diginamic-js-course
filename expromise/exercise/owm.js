@@ -1,6 +1,9 @@
 import {APPID} from "./config.js";
+import Town from "./component/Town.js";
 
 (function() {
+  let currentTown = null;
+
   /**
    * Get weather from coordinates.
    * @param {string} city
@@ -21,18 +24,24 @@ import {APPID} from "./config.js";
           }
         })
         .then(data => {
-          console.log(data);
-          console.log(data["wind"]["speed"]);
-          document.getElementById("city-name").innerHTML = city;
-          document.getElementById("temp").innerHTML = data["main"]["temp"];
-          document.getElementById("temp-max").innerHTML = data["main"]["temp_max"];
-          document.getElementById("temp-min").innerHTML = data["main"]["temp_min"];
-          document.getElementById("humidity").innerHTML = data["main"]["humidity"];
-          document.getElementById("pressure").innerHTML = data["main"]["pressure"];
-          document.getElementById("wind-deg").innerHTML = data["wind"]["deg"];
-          document.getElementById("wind-kt").innerHTML = data["wind"]["speed"];
+          const meteo = {
+            temp: data.main.temp,
+            description: data.weather[0].description,
+            temp_max: data.main.temp_max,
+            temp_min: data.main.temp_min,
+            humidity: data.main.humidity,
+            pressure: data.main.pressure,
+            wind: {
+              deg: data.wind.deg,
+              speed: data.wind.speed
+            }
+          }
 
-          document.querySelector("article").style.display = "block";
+          if (currentTown) {
+            currentTown.remove();
+          }
+
+            currentTown = new Town(city, meteo);
         })
         .catch(error => {
           console.log(error.message);
