@@ -66,6 +66,10 @@
     btnValidate.onclick = function(event) {
       validateTask(event.target, div);
     }
+
+    btnDelete.onclick = function(event) {
+      deleteTask(event.target, div);
+    }
   }
 
   /**
@@ -107,6 +111,12 @@
     taskBtn.previousElementSibling.hidden = false;
 
     sectionNewTask.insertBefore(parent, null);
+  }
+
+  function deleteTask(taskBtn, parent) {
+    if (window.confirm("Are you sure you want to delete this task?")) {
+      parent.remove();
+    }
   }
 
   const main  = createMarkup("main", "", document.body);
