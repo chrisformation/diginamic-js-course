@@ -90,6 +90,23 @@
     parent.insertBefore(btnInvalidate, taskBtn.nextElementSibling);
 
     sectionValidateTask.insertBefore(parent, null);
+
+    btnInvalidate.onclick = function(event) {
+      invalidateTask(event.target, parent);
+    }
+  }
+
+  /**
+   * Invalidate a task.
+   * @param {HTMLElement} taskBtn
+   * @param {HTMLElement} parent
+   */
+  function invalidateTask(taskBtn, parent) {
+    taskBtn.previousElementSibling.previousElementSibling.style.textDecoration = "none";
+    taskBtn.hidden = true;
+    taskBtn.previousElementSibling.hidden = false;
+
+    sectionNewTask.insertBefore(parent, null);
   }
 
   const main  = createMarkup("main", "", document.body);
