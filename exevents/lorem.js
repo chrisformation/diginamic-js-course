@@ -1,11 +1,11 @@
 (function() {
+
   /**
    * Create a new DOM element.
    * @param {String} markup_name
    * @param {String} text
    * @param {HTMLElement} parent
-   * @param {Array|Object} attributes  (doit comprendre les propriétés name et
-   * value)
+   * @param {Array|Object} attributes
    * @returns HTMLElement
    */
   function createMarkup(markup_name, text, parent, attributes = []) {
@@ -26,11 +26,20 @@
     return markup;
   }
 
-  let nav = createMarkup("nav", "", document.querySelector("header"));
-  let item1 = createMarkup("button", "Item 1", nav, [{"name": "type", "value": "button"}, {"name": "id", "value": "test"}]);
-  let item2 = createMarkup("button", "Item 2", nav, {"name": "type", "value": "button"});
-  let item3 = createMarkup("button", "Item 3", nav, {"name": "type", "value": "button"});
-  let item4 = createMarkup("button", "Item 4", nav, {"name": "type", "value": "button"});
+  /**
+   * Create a new DOM paragraph element after on click.
+   * @param {HTMLElement} parent
+   */
+  function onClickAddParagraph(parent = document.body) {
+    createMarkup("p", "Lorem ipsum dolor sit amet, consectetur adipiscing" +
+        " elit.", parent);
+  }
 
-  document.querySelector("button").style.color = "red";
-})()
+  let main = createMarkup("main", "", document.body);
+  let button = createMarkup("button", "Add paragraph", main, {"name": "type", "value": "button"});
+
+  button.onclick = (function(event){
+    onClickAddParagraph(main);
+  });
+
+})();
