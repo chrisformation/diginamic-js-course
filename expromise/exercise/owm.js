@@ -1,4 +1,8 @@
 (function() {
+  /**
+   * Get coordinates from an french city name.
+   * @param {string} city
+   */
   function getCoords(city) {
     //"http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}")
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},,FRA&appid=7d2e46eb2210eba3440dedf6c61afb39&lang=fr&units=metric`)
@@ -16,6 +20,12 @@
     ;
   }
 
+  /**
+   * Get weather from coordinates.
+   * @param {number} lat
+   * @param {number} lon
+   * @param {string} name
+   */
   function getWeather(lat, lon, name) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7d2e46eb2210eba3440dedf6c61afb39&lang=fr&units=metric`)
     .then(response => {
