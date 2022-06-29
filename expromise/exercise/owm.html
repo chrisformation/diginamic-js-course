@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OpenWeatherMap exercice</title>
+  </head>
+  <body>
+    <main>
+        <h1>Exercice d'utilisation de l'API OpenWeatherMap</h1>
+      
+      <section>
+        <h2>Choix de la ville</h2>
+        <form action="">
+          <label for="city">Ville</label> <select name="city" id="city">
+          <option value="paris">Paris</option>
+          <option value="lyon">Lyon</option>
+          <option value="marseille">Marseille</option>
+          <option value="montpellier">Montpellier</option>
+          <option value="lattes">Lattes</option>
+          <option value="perols">Pérols</option>
+          <option value="issy-les-moulineaux">Issy-les-Moulineaux</option>
+        </select> <input type="button" value="Envoyer">
+        </form>
+      </section>
+      
+      <section>
+        <h2>Résultat</h2>
+  
+        <article style="display: none">
+          <p>Nom de la ville : <span id="city-name"></span></p>
+          <p>Température : <span id="temp"></span>°C</p>
+          <p>Maximale : <span id="temp-max"></span>°C</p>
+          <p>Minimale : <span id="temp-min"></span>°C</p>
+          <p>Humidité : <span id="humidity"></span>%</p>
+          <p>Pression : <span id="pressure"></span>hPa</p>
+          <p>Vent : <span id="wind-deg"></span>°, <span id="wind-kt"></span>kt
+          </p>
+        </article>
+      </section>
+    </main>
+  
+    <script src="owm.js"></script>
+  </body>
+</html>
