@@ -33,7 +33,7 @@
     const div = createMarkup(
         "div",
         "",
-        main,
+        sectionNewTask,
         {name: "style", value: "border: 1px solid black; padding: 1rem;" +
               " margin: 1rem 0"}
     );
@@ -62,12 +62,40 @@
         div,
         {name: "type", value: "button"}
          );
+
+    btnValidate.onclick = function(event) {
+      validateTask(event.target, div);
+    }
+  }
+
+  /**
+   * Validate a task.
+   * @param {HTMLElement} taskBtn
+   * @param {HTMLElement} parent
+   */
+  function validateTask(taskBtn, parent) {
+    taskBtn.previousElementSibling.style.textDecoration = "line-through";
+    taskBtn.hidden = true;
+
+    const btnInvalidate = createMarkup(
+        "button",
+        "Invalidate",
+        parent,
+        [
+          {name: "type", value: "button"},
+          {name:"style", value: "margin-right: 1rem"}
+        ]
+    );
+
+    parent.insertBefore(btnInvalidate, taskBtn.nextElementSibling);
+
+    sectionValidateTask.insertBefore(parent, null);
   }
 
   const main  = createMarkup("main", "", document.body);
   const form = createMarkup("form", "", main);
 
-  const label_input = createMarkup(
+  const labelInput = createMarkup(
       "label",
       "Please enter name of task: ",
       form,
@@ -90,7 +118,20 @@
       "Add task",
       form,
       {name: "type", value: "button"}
-  )
+  );
+
+  const sectionNewTask = createMarkup(
+      "section",
+      "",
+      main
+  );
+
+  const sectionValidateTask = createMarkup(
+      "section",
+      "",
+      main,
+      {name: "style", value: "margin-top: 2rem"}
+  );
 
   button.onclick = function (event) {
     createTask(event.target.previousSibling.value)
