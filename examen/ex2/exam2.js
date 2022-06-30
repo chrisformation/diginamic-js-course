@@ -3,29 +3,35 @@ import createMarkup from "../../utils/utils.js";
 (function () {
   function createHeader() {
     document.getElementById("btn-header").remove();
-    return createMarkup(
+    const header = createMarkup(
       "header",
         "",
         document.body,
     );
+
+    document.body.insertBefore(header, document.body.firstChild);
   }
 
   function createMain() {
     document.getElementById("btn-main").remove();
-    return createMarkup(
+    const main = createMarkup(
       "main",
         "",
         document.body,
     );
+
+    document.body.insertBefore(main, document.querySelector("footer"));
   }
 
   function createFooter() {
     document.getElementById("btn-footer").remove();
-    return createMarkup(
+    const footer = createMarkup(
       "footer",
         "",
         document.body,
     );
+
+    document.body.insertBefore(footer, document.body.lastChild);
   }
 
   const btnHeader = createMarkup(
