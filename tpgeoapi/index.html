@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TP régions/département/communes</title>
+  </head>
+  <body>
+    <main>
+      <h1>TP utilisant l'API GeoIP de la République Française</h1>
+      
+      <section>
+        <h2>Formulaire</h2>
+        <form>
+          <div>
+            <label for="district">Région :</label>
+            <select name="district" id="district">
+              <option value="0">Sélectionner la région</option>
+            </select>
+          </div>
+  
+          <div>
+            <label for="department">Département :</label>
+            <select name="department" id="department">
+              <option value="0">Sélectionner le département</option>
+            </select>
+          </div>
+  
+          <div>
+            <label for="city">Commune :</label>
+            <select name="city" id="city">
+              <option value="0">Sélectionner la commune</option>
+            </select>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="assets/js/geoapi.js"></script>
+  </body>
+</html>
