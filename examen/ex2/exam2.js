@@ -1,4 +1,4 @@
-import createMarkup from "../../utils/utils.js";
+import createMarkup from "../utils/utils.js";
 
 (function () {
   function createHeader() {
